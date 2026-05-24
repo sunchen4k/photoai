@@ -11,14 +11,15 @@ function fnv1aHash(input: string): number {
 
 export function verifyCode(code: string): boolean {
   const cleaned = code.toUpperCase().replace(/[^A-Z0-9]/g, '')
-  if (cleaned.length !== 12) return false
+  // Format: PHOTO-XXXX-XXXX-XXXX -> 17 chars after removing dashes
+  if (!cleaned.startsWith('PHOTO') || cleaned.length !== 17) return false
 
-  const part1 = cleaned.slice(0, 4)
-  const part2 = cleaned.slice(4, 8)
-  const part3 = cleaned.slice(8, 12)
+  const part1 = cleaned.slice(5, 9)
+  const part2 = cleaned.slice(9, 13)
+  const part3 = cleaned.slice(13, 17)
 
   const expected = fnv1aHash(`${part1}-${part2}-${ACTIVATION_VERIFIER}`)
-    .toString(36).toUpperCase().slice(0, 4)
+    .toString(36).toUpperCase().slice(0, 4).padStart(4, '0')
 
   return part3 === expected
 }

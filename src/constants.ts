@@ -34,4 +34,4 @@ export const DEFAULT_WATERMARK: WatermarkConfig = {
 
 // Pre-computed: FNV-1a hash of a secret seed. Used to verify activation codes.
 // This is NOT the same as the private key used to generate codes.
-export const ACTIVATION_VERIFIER = '2d4f6f56'
+export const ACTIVATION_VERIFIER = 'photoai-2026-secret-key'
