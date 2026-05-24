@@ -6,7 +6,6 @@ import { EditorPanel } from './components/editor/EditorPanel'
 import { ColorGrading } from './components/editor/ColorGrading'
 import { WatermarkPanel } from './components/editor/WatermarkPanel'
 import { CompressionPanel } from './components/editor/CompressionPanel'
-import { BeforeAfter } from './components/editor/BeforeAfter'
 import { PresetManager } from './components/editor/PresetManager'
 import { ExportBar } from './components/export/ExportBar'
 import { ActivationModal } from './components/activation/ActivationModal'
@@ -44,15 +43,7 @@ function App() {
             <PresetManager />
           </div>
         }
-        preview={
-          activeImageId ? (
-            <div className="flex flex-col items-center justify-center h-full gap-4 p-4">
-              <BeforeAfter />
-            </div>
-          ) : (
-            <EditorPanel />
-          )
-        }
+        preview={<EditorPanel />}
         settings={
           activeImageId ? (
             <div className="flex flex-col h-full">
