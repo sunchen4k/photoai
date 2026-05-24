@@ -75,6 +75,7 @@ export const useImageStore = create<ImageStore>((set, get) => ({
         resizeWidth: null,
         resizeHeight: null,
         edited: false,
+        version: 0,
       })
     }
     const images = [...get().images, ...newItems]
@@ -93,7 +94,7 @@ export const useImageStore = create<ImageStore>((set, get) => ({
 
   updateSettings: (id, patch) => {
     const images = get().images.map((i) =>
-      i.id === id ? { ...i, settings: { ...i.settings, ...patch }, edited: true } : i
+      i.id === id ? { ...i, settings: { ...i.settings, ...patch }, edited: true, version: i.version + 1 } : i
     )
     set({ images })
   },

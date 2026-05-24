@@ -52,6 +52,7 @@ export interface ImageItem {
   resizeWidth: number | null
   resizeHeight: number | null
   edited: boolean
+  version: number
 }
 
 export interface Preset {
